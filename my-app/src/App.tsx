@@ -3,6 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import { Hello } from "./components/Hello";
 import { Login } from "./components/Login";
+import { Admin } from "./components/Admin";
 
 import './App.css';
 
@@ -11,6 +12,7 @@ const App: React.FC = () => {
     <div className="App">
       <Hello />
       <Login />
+      <Admin />
     </div>
   );
 }
