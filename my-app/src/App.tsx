@@ -1,32 +1,34 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Switch, Route, withRouter, RouteComponentProps, Link, Router,  } from 'react-router-dom';
-
-import { Hello } from "./components/Hello";
-import { Login } from "./components/Login";
-import { Admin } from "./components/Admin";
-
+import * as React from 'react';
 import './App.css';
+import { Switch, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import Hello from './components/Hello';
+import Login from './components/Login';
+import Admin from './components/Admin';
 
-class App extends React.Component {
-  render() {
+class App extends React.Component<RouteComponentProps<any>> {
+  public render() {
     return (
-        <div>
-          <nav>
-            <ul>
-                <Link to='/'> <li>Hello </li></Link>
-                <Link to='/Login'> <li>Login</li> </Link>
-                <Link to='/Admin'><li> Admin </li> </Link>
-            </ul>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to={'/'}> Home </Link>
+            </li>
+            <li>
+              <Link to={'/Admin'}> Admin </Link>
+            </li>
+            <li>
+              <Link to={'/Login'}> Login </Link>
+            </li>
+          </ul>
         </nav>
-          <Switch>
-            <Route exact path="/" component={Hello} />
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/Admin" component={Admin} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path={'/'} exact component={Hello} />
+          <Route path={'/Login'} exact component={Login} />
+          <Route path={'/Admin'} exact component={Admin} />
+        </Switch>
+      </div>
     );
   }
 }
-
-export default App;
+export default withRouter(App);

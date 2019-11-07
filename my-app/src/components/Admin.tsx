@@ -1,5 +1,21 @@
-import * as React from "react";
+import * as React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-export interface AdminProps {  }
+class Admin extends React.Component<RouteComponentProps> {
+    constructor(props: RouteComponentProps) {
+        super(props);
+    }
 
-export const Admin = (props: AdminProps) => <h1>Admin page</h1>;
+    public render() {
+        return (
+            <div>
+                <p>edit</p>
+                <p>search</p>
+                <p>remove</p>
+                <p>Add</p>
+            </div>
+        )
+    }
+};
+
+export default withRouter(Admin);

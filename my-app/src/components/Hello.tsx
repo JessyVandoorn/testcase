@@ -1,5 +1,19 @@
 import * as React from "react";
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-export interface HelloProps {}
+class Hello extends React.Component<RouteComponentProps> {
+    constructor(props: RouteComponentProps) {
+        super(props);
+    }
 
-export const Hello = (props: HelloProps) => <h1>Login page</h1>;
+    public render() {
+        return (
+            <ul>
+                <li>Person A</li>
+                <li>Person B</li>
+            </ul>
+        )
+    }
+};
+
+export default withRouter(Hello);
