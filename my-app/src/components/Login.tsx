@@ -14,7 +14,7 @@ class Login extends React.Component<RouteComponentProps> {
                     <label htmlFor="">Email
                         <input type="email"/>
                     </label>
-                    <button type="submit">Login</button>
+                    <button type="submit">Send</button>
                 </fieldset>
             </form>
         )

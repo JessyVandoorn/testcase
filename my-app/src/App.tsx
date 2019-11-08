@@ -6,6 +6,10 @@ import Login from './components/Login';
 import Admin from './components/Admin';
 
 class App extends React.Component<RouteComponentProps<any>> {
+  constructor(props: any) {
+    super(props);
+  }
+
   public render() {
     return (
       <div>
