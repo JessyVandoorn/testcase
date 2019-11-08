@@ -10,8 +10,17 @@ class Admin extends React.Component<RouteComponentProps> {
         return (
             <div>
                 <p>edit</p>
-                <p>search</p>
-                <p>remove</p>
+                <div>
+                    <label htmlFor="">
+                        search
+                        <input type="text"/>
+                    </label>
+                    <input type="submit"/>
+                </div>
+                <div>
+                    <p>Remove</p>
+                    <button>Remove</button>
+                </div>
                 <p>Add</p>
             </div>
         )
