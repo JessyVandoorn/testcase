@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
 import { auth } from './../firebase';
 import { updateByPropertyName } from './../utils/helpers';
+import { SignUpLink } from './Register';
 
 interface State {   
     email: string;
@@ -40,6 +41,8 @@ class Login extends React.Component<any, State> {
                 this.setState(updateByPropertyName('error', error));
             });
 
+        
+
         event.preventDefault();
     }
 
@@ -55,7 +58,8 @@ class Login extends React.Component<any, State> {
             email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <div>
+                <form onSubmit={this.onSubmit}>
                 <input
                     value={email}
                     onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
@@ -74,17 +78,16 @@ class Login extends React.Component<any, State> {
 
                 {error && <p>{error.message}</p>}
             </form>
+            <p>
+            Don't have an account?
+            {' '}
+            <Link to={'/Register'}>Sign Up</Link>
+        </p>
+            </div>
+            
         )
     }
 };
 
-const LoginPage: React.StatelessComponent<{}> = ({history}: any) =>
-    (
-        <div>
-            <h1>Login</h1>
-            <LoginPage />
-        </div>
-    );
 
 export default withRouter(Login);
-export {LoginPage}

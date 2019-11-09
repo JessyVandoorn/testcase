@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
 
 class Admin extends React.Component<RouteComponentProps> {
     constructor(props: RouteComponentProps) {
@@ -22,6 +22,11 @@ class Admin extends React.Component<RouteComponentProps> {
                     <button>Remove</button>
                 </div>
                 <p>Add</p>
+                <p>
+            Add another user
+            {' '}
+            <Link to={'/Register'}>Sign Up</Link>
+        </p>
             </div>
         )
     }

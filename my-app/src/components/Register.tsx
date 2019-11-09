@@ -27,6 +27,7 @@ class Register extends React.Component<any, State> {
     }
 
     onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        console.log(event);
         const {
             username,
             email,
@@ -39,8 +40,10 @@ class Register extends React.Component<any, State> {
 
         auth.doCreateUserWithEmailAndPassword(email, passwordOne)
             .then(authUser => {
+                console.log(authUser);
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.uid, username, email)
+                if(authUser.user !== null){
+                    db.doCreateUser(authUser.user.uid, username, email)
                     .then(() => {
                         this.setState(() => ({...initial_state}));
                         history.push('/Admin');
@@ -48,6 +51,8 @@ class Register extends React.Component<any, State> {
                     .catch(error => {
                         this.setState(updateByPropertyName('error', error));
                     });
+                }
+                
 
             })
             .catch(error => {
@@ -108,7 +113,7 @@ class Register extends React.Component<any, State> {
     }
 }
 
-const RegisterPage: React.StatelessComponent<{}> = ({history}: any) =>
+const SignUpPage: React.StatelessComponent<{}> = ({history}: any) =>
     (
         <div>
             <h1>SignUp</h1>
@@ -125,9 +130,9 @@ const SignUpLink = () =>
         </p>
     );
 
-export default withRouter(RegisterPage);
+export default withRouter(SignUpPage);
 
 export {
-    RegisterPage,
+    Register,
     SignUpLink,
 };

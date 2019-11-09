@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, toJS } from 'mobx';
 import { RootStore } from './index';
 
 class UserStore {
@@ -11,8 +11,8 @@ class UserStore {
         this.rootStore = rootStore;
     }
 
-    @action setUsers = users => {
-        this.users = users;
+    @action setUsers = (users: {}) => {
+        this.users = toJS(users);
     }
 }
 

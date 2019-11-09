@@ -1,15 +1,17 @@
 import * as React from 'react';
 import './App.css';
-import { Switch, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import { Switch,Redirect, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import { firebase } from "./firebase";
 import Hello from './components/Hello';
 import Login from './components/Login';
 import Admin from './components/Admin';
-import RegisterPage from './components/Register';
+import SignUpPage from './components/Register';
 
 class App extends React.Component<RouteComponentProps<any>> {
   constructor(props: any) {
     super(props);
   }
+
 
   public render() {
     return (
@@ -30,8 +32,8 @@ class App extends React.Component<RouteComponentProps<any>> {
         <Switch>
           <Route  path={'/'} exact component={Hello} />
           <Route exact={true} path={'/Login'} component={Login} />
-          <Route exact={true} path={'/Register'} component={RegisterPage} />
-          <Route path={'/Admin'} exact component={Admin} />
+          <Route exact={true} path={'/Register'} component={SignUpPage} />
+          <Route path="/Admin" component={Admin} />
         </Switch>
       </div>
     );
