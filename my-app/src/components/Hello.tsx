@@ -43,6 +43,7 @@ interface Users {
                 <section key={key}>
                     <img src="/person-icon-white.png" alt="image person" width="50" height="50"/>
                    <h3>{users[key].username}</h3> 
+                   {/* <p>{users[key].email}</p> */}
                 </section>
                     )})}
                 </div>

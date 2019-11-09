@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
+import { withAuthorization } from "./../firebase/withAuthorization";
 
-class Admin extends React.Component<RouteComponentProps> {
+class AdminPage extends React.Component<RouteComponentProps> {
     constructor(props: RouteComponentProps) {
         super(props);
     }
@@ -27,9 +28,15 @@ class Admin extends React.Component<RouteComponentProps> {
             {' '}
             <Link to={'/Register'}>Sign Up</Link>
         </p>
+        <button>
+            <Link to={'/Logout'}>Logout</Link>
+        </button>
             </div>
         )
     }
 };
 
-export default withRouter(Admin);
+
+const authCondition = (authUser: any) => !!authUser;
+
+export const Admin = withAuthorization(authCondition)(AdminPage);

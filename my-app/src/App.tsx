@@ -4,12 +4,26 @@ import { Switch,Redirect, Route, withRouter, RouteComponentProps, Link } from 'r
 import { firebase } from "./firebase";
 import Hello from './components/Hello';
 import Login from './components/Login';
-import Admin from './components/Admin';
+import Logout from './components/Logout';
+import {Admin} from './components/Admin';
 import SignUpPage from './components/Register';
+import { withAuthentication } from "./firebase/withAuthentication";
 
-class App extends React.Component<RouteComponentProps<any>> {
+class AppComponent extends React.Component<RouteComponentProps<any>> {
   constructor(props: any) {
     super(props);
+
+    this.state = {
+      authUser: null
+    };
+  }
+
+  public componentDidMount() {
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState(() => ({ authUser }))
+        : this.setState(() => ({ authUser: null }));
+    });
   }
 
 
@@ -34,9 +48,10 @@ class App extends React.Component<RouteComponentProps<any>> {
           <Route exact={true} path={'/Login'} component={Login} />
           <Route exact={true} path={'/Register'} component={SignUpPage} />
           <Route path="/Admin" component={Admin} />
+          <Route path="/Logout" component={Logout} />
         </Switch>
       </div>
     );
   }
 }
-export default withRouter(App);
+export const App = withAuthentication(AppComponent);
