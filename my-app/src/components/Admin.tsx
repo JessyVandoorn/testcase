@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
 import { withAuthorization } from "./../firebase/withAuthorization";
+import SignOutButton from './Logout';
 
 class AdminPage extends React.Component<RouteComponentProps> {
     constructor(props: RouteComponentProps) {
@@ -28,9 +29,7 @@ class AdminPage extends React.Component<RouteComponentProps> {
             {' '}
             <Link to={'/Register'}>Sign Up</Link>
         </p>
-        <button>
-            <Link to={'/Logout'}>Logout</Link>
-        </button>
+        <SignOutButton />
             </div>
         )
     }
