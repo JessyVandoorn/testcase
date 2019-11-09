@@ -59,20 +59,22 @@ class Login extends React.Component<any, State> {
 
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <h3 className="h3 mb-3 font-weight-normal">Login</h3>
+                <form onSubmit={this.onSubmit} className="form-signin">
                 <input
                     value={email}
                     onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
                     type="text"
                     placeholder="Email Address"
+                    id="inputEmail" className="form-control" 
                 />
                 <input
                     value={password}
                     onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
                     type="password"
-                    placeholder="Password"
+                    placeholder="Password" className="form-control" 
                 />
-                <button disabled={isInvalid} type="submit">
+                <button disabled={isInvalid} type="submit" className="btn btn-lg btn-primary btn-block">
                     Sign In
                 </button>
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { Switch,Redirect, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { firebase } from "./firebase";
@@ -30,16 +31,16 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
   public render() {
     return (
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to={'/'}> Home </Link>
+        <nav >
+          <ul className="nav nav-tabs">
+            <li className="nav-item">
+              <Link to={'/'} className="nav-link active"> Home </Link>
             </li>
-            <li>
-              <Link to={'/Admin'}> Admin </Link>
+            <li className="nav-item">
+              <Link to={'/Admin'} className="nav-link "> Admin </Link>
             </li>
-            <li>
-              <Link to={'/Login'}> Login </Link>
+            <li className="nav-item">
+              <Link to={'/Login'} className="nav-link "> Login </Link>
             </li>
           </ul>
         </nav>
