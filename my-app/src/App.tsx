@@ -4,7 +4,7 @@ import { Switch, Route, withRouter, RouteComponentProps, Link } from 'react-rout
 import Hello from './components/Hello';
 import Login from './components/Login';
 import Admin from './components/Admin';
-import EditCustomer from './components/users/Edit';
+import RegisterPage from './components/Register';
 
 class App extends React.Component<RouteComponentProps<any>> {
   constructor(props: any) {
@@ -28,10 +28,10 @@ class App extends React.Component<RouteComponentProps<any>> {
           </ul>
         </nav>
         <Switch>
-          <Route path={'/'} exact component={Hello} />
-          <Route path={'/Login'} exact component={Login} />
+          <Route  path={'/'} exact component={Hello} />
+          <Route exact={true} path={'/Login'} component={Login} />
+          <Route exact={true} path={'/Register'} component={RegisterPage} />
           <Route path={'/Admin'} exact component={Admin} />
-          <Route path={'/edit/:id'} exact component={EditCustomer} />
         </Switch>
       </div>
     );
