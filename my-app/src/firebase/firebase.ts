@@ -1,12 +1,14 @@
 import * as firebase from 'firebase';
 
+require("dotenv").config();
+
 const config = {
-    apiKey: 'AIzaSyD7lnKHVeBy27MyfwlmclZQa-9ZNn1nCj4',
-    authDomain: 'testcase-fd1e6.firebaseapp.com',
-    databaseURL: 'https://testcase-fd1e6.firebaseio.com/',
-    projectId: 'testcase-fd1e6',
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
     storageBucket: '',
-    messagingSenderId: '561912624627',
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
 };
 
 if (!firebase.apps.length) {
