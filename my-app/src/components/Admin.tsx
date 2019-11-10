@@ -12,25 +12,19 @@ interface State {
     username: string;
     value: string;
     error: { message: string } | null;
+    users?: any;
 }
 
 const initial_state: State = {
     username: '',
     value: '',
     error: null,
-}
-
-interface InterfaceProps {
-    userStore: UserStore;
-}
-
-interface Users {
-    users:{};
+    users: {},
 }
 
 
-class AdminPage extends React.Component<RouteComponentProps, State, InterfaceProps> {
-    [x: string]: any;
+
+class AdminPage extends React.Component<RouteComponentProps, State> {
     constructor(props: RouteComponentProps) {
         super(props);
         this.state = {...initial_state};
@@ -91,27 +85,27 @@ class AdminPage extends React.Component<RouteComponentProps, State, InterfacePro
             event.preventDefault();
     }
 
-    public handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    public handleSearch = (event: any) => {
         //function
        const {value}: any = this.state;
-       const {userStore}: any = this.InterfaceProps;
-
+       let {users}: any = this.state;
+       console.log(event);
        console.log(value);
+       console.log(users);
 
-       db.searchUser(value)
-       .then(
-            snapshot => {
-                userStore.setUsers(snapshot.val());
-                console.log(userStore);
-            }
-       );
-        event.preventDefault();
+    db.searchUser(value).on('value', snapshot => {
+        
+        users = snapshot.val();
+        console.log(users);
+      });
+    
+       event.preventDefault();
     }
     
 
     public render() {
-        const {username, value}:any = this.state;
-        const {users}:any = this.props;
+        const {username, value, users}:any = this.state;
+
         return (
             <AuthUserContext.Consumer>
                 {authUser => {
@@ -132,11 +126,19 @@ class AdminPage extends React.Component<RouteComponentProps, State, InterfacePro
                        </label>
                        <button onClick={this.handleSearch}>Search</button>
                    </form>
-                   
+                   {
+                       users.length !== 0? (
+                       Object.keys(toJS(users)).map(key =>{
+                           console.log(users[key])
+                        return(
+                <section key={key}>
+                   <h3>{users[key].username}</h3> 
+                </section>
+                    )})): <p>No search results at this moment</p>}
                 </div>
                 <div>
                     <p>Remove</p>
-                    <button onClick={this.handleDelete}>Delete user</button>
+                    <button onSubmit={this.handleDelete}>Delete user</button>
                 </div>
                 <p>Add</p>
                 <p>

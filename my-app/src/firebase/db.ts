@@ -23,4 +23,4 @@ db.ref(`users/${id}`).remove();
 
 //search for users
 export const searchUser = (value: string) => 
-db.ref('users').equalTo(`${value}`).once('value');
+db.ref('users').orderByChild('email').startAt(value);
