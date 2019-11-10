@@ -7,6 +7,7 @@ import { AuthUserContext } from "./../firebase/AuthUserContext";
 import { string } from 'prop-types';
 import { db, auth } from './../firebase';
 import UserStore from '../store/userStore';
+import { UserList } from "./UserList";
 
 interface State {
     username: string;
@@ -19,7 +20,7 @@ const initial_state: State = {
     username: '',
     value: '',
     error: null,
-    users: {},
+    users: null,
 }
 
 
@@ -88,16 +89,15 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
     public handleSearch = (event: any) => {
         //function
        const {value}: any = this.state;
-       let {users}: any = this.state;
-       console.log(event);
-       console.log(value);
-       console.log(users);
-
-    db.searchUser(value).on('value', snapshot => {
-        
-        users = snapshot.val();
-        console.log(users);
-      });
+  
+        if(value !== ""){
+            db.searchUser(value).on('value', snapshot => {
+                this.setState(() => ({users: snapshot.val()}));
+               });
+        } else {
+            this.setState(() => ({users: null}));
+        }
+   
     
        event.preventDefault();
     }
@@ -126,15 +126,8 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
                        </label>
                        <button onClick={this.handleSearch}>Search</button>
                    </form>
-                   {
-                       users.length !== 0? (
-                       Object.keys(toJS(users)).map(key =>{
-                           console.log(users[key])
-                        return(
-                <section key={key}>
-                   <h3>{users[key].username}</h3> 
-                </section>
-                    )})): <p>No search results at this moment</p>}
+                   {!!users && <UserList users={users} />}
+
                 </div>
                 <div>
                     <p>Remove</p>
