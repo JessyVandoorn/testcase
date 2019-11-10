@@ -1,26 +1,40 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
+import { toJS } from 'mobx';
 import { withAuthorization } from "./../firebase/withAuthorization";
 import SignOutButton from './Logout';
 import { AuthUserContext } from "./../firebase/AuthUserContext";
 import { string } from 'prop-types';
 import { db, auth } from './../firebase';
+import UserStore from '../store/userStore';
 
 interface State {
     username: string;
+    value: string;
     error: { message: string } | null;
 }
 
 const initial_state: State = {
     username: '',
+    value: '',
     error: null,
 }
 
+interface InterfaceProps {
+    userStore: UserStore;
+}
 
-class AdminPage extends React.Component<RouteComponentProps, State> {
+interface Users {
+    users:{};
+}
+
+
+class AdminPage extends React.Component<RouteComponentProps, State, InterfaceProps> {
+    [x: string]: any;
     constructor(props: RouteComponentProps) {
         super(props);
         this.state = {...initial_state};
+        
     }
 
     public static propKey(propertyName: string, value: string): object {
@@ -50,14 +64,57 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
 
         event.preventDefault();
     }
+
+    private handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const {error} = this.state;
+        const user:any = auth.currentUser();
+
+        const {
+            history,
+        } = this.props;
+
+        user.delete()
+            .then(() => {
+                db.deleteUser(user)
+                    .then(() => {
+                        history.push('/');
+                    })
+                    .catch((error: string) => {
+                        this.setState(AdminPage.propKey('error', error));
+                    });
+                })
+                
+            .catch((error: string) => {
+                this.setState(AdminPage.propKey('error', error));
+            });
+
+            event.preventDefault();
+    }
+
+    public handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+        //function
+       const {value}: any = this.state;
+       const {userStore}: any = this.InterfaceProps;
+
+       console.log(value);
+
+       db.searchUser(value)
+       .then(
+            snapshot => {
+                userStore.setUsers(snapshot.val());
+                console.log(userStore);
+            }
+       );
+        event.preventDefault();
+    }
     
 
     public render() {
-        const {username}:any = this.state;
+        const {username, value}:any = this.state;
+        const {users}:any = this.props;
         return (
             <AuthUserContext.Consumer>
                 {authUser => {
-                    console.log(authUser);
                     return(
             <div>
                 <h2>Account: {(authUser as any).email}</h2>
@@ -69,21 +126,23 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
                     <button type="submit">Change username</button>
                 </form>
                 <div>
-                    <label htmlFor="">
-                        search
-                        <input type="text"/>
-                    </label>
-                    <input type="submit"/>
+                   <form action="">
+                       <label htmlFor="">Search in database of logged in users
+                        <input type="search" value={value} onChange={event => this.setStateWithEvent(event, "value")}/>
+                       </label>
+                       <button onClick={this.handleSearch}>Search</button>
+                   </form>
+                   
                 </div>
                 <div>
                     <p>Remove</p>
-                    <button>Remove</button>
+                    <button onClick={this.handleDelete}>Delete user</button>
                 </div>
                 <p>Add</p>
                 <p>
             Add another user
             {' '}
-            <Link to={'/Register'}>Sign Up</Link>
+            <Link to={'/Register'}>Add User</Link>
         </p>
         <SignOutButton />
             </div>

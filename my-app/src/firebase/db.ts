@@ -16,3 +16,11 @@ export const updateUser = (id: string, username: string) =>
   db.ref(`users/${id}`).update({
     username
   });
+
+//remove user
+export const deleteUser = (id: string) => 
+db.ref(`users/${id}`).remove();
+
+//search for users
+export const searchUser = (value: string) => 
+db.ref('users').equalTo(`${value}`).once('value');
