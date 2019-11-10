@@ -19,3 +19,7 @@ export const doPasswordReset = (email: string) =>
 // Password Change
 export const doPasswordUpdate = (password: string) =>
 auth.currentUser ? auth.currentUser.updatePassword(password) : Promise.reject(new Error('no current user'));
+
+//get current user
+export const currentUser = () => 
+auth.currentUser;

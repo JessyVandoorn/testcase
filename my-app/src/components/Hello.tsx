@@ -30,7 +30,6 @@ interface Users {
 
         render() {
             const {users}:any = this.props.userStore;
-            console.log(users);
 
             return (
                 <div>
@@ -38,7 +37,6 @@ interface Users {
                     <p>The Home Page is accessible by every signed in user.</p>
     
                     {Object.keys(toJS(users)).map(key =>{
-                        console.log(toJS(users[key].username));
                         return(
                 <section key={key}>
                     <img src="/person-icon-white.png" alt="image person" width="50" height="50"/>
