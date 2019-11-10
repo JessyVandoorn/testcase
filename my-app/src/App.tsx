@@ -1,7 +1,7 @@
 import * as React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { Switch,Redirect, Route, withRouter, RouteComponentProps, Link } from 'react-router-dom';
+import { Switch, Route, RouteComponentProps, NavLink } from 'react-router-dom';
 import { firebase } from "./firebase";
 import Hello from './components/Hello';
 import Login from './components/Login';
@@ -29,18 +29,20 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
 
 
   public render() {
+    const {authUser}:any = this.state;
+
     return (
       <div>
         <nav >
           <ul className="nav nav-tabs">
             <li className="nav-item">
-              <Link to={'/'} className="nav-link active"> Home </Link>
+              <NavLink to={'/'} className="nav-link"> Home </NavLink>
             </li>
             <li className="nav-item">
-              <Link to={'/Admin'} className="nav-link "> Admin </Link>
+              <NavLink to={'/Admin'} className="nav-link "> Admin </NavLink>
             </li>
             <li className="nav-item">
-              <Link to={'/Login'} className="nav-link "> Login </Link>
+              {authUser === null ?  <NavLink to={'/Login'} className="nav-link "> Login </NavLink> :  <NavLink to={'/Logout'} className="nav-link "> Logout </NavLink> }
             </li>
           </ul>
         </nav>

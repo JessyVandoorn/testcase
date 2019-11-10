@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
-import { toJS } from 'mobx';
+import { RouteComponentProps, Link } from 'react-router-dom';
 import { withAuthorization } from "./../firebase/withAuthorization";
 import SignOutButton from './Logout';
 import { AuthUserContext } from "./../firebase/AuthUserContext";
-import { string } from 'prop-types';
 import { db, auth } from './../firebase';
-import UserStore from '../store/userStore';
 import { UserList } from "./UserList";
 
 interface State {
@@ -28,8 +25,7 @@ const initial_state: State = {
 class AdminPage extends React.Component<RouteComponentProps, State> {
     constructor(props: RouteComponentProps) {
         super(props);
-        this.state = {...initial_state};
-        
+        this.state = {...initial_state}; 
     }
 
     public static propKey(propertyName: string, value: string): object {

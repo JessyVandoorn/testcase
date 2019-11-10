@@ -5,9 +5,6 @@ interface InterfaceProps {
 }
 
 export class UserList extends React.Component<InterfaceProps, {}> {
-  constructor(props: any) {
-    super(props);
-  }
 
   public render() {
     const { users }: any = this.props;

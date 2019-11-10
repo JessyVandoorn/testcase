@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { auth } from './../firebase';
 import { updateByPropertyName } from './../utils/helpers';
-import { SignUpLink } from './Register';
 
 interface State {   
     email: string;
