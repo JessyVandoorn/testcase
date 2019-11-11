@@ -1,11 +1,1032 @@
 // Override default variables before the import
 $body-bg: #000;
-
+$yellow: #FDE8AA;
+$lightblue: #EFFAFE;
+$darkblue: #374958;
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+@import 'vars.css';
 
-.form-signin{
-width: 100%;
-max-width: 330px;
-padding: 15px;
-margin: auto;}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  font-family: 'roboto', sans-serif;
+  font-weight: 300;
+  color: $darkblue;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: $darkblue;
+}
+
+em {
+  font-weight: 300;
+  text-transform: lowercase;
+}
+
+textarea {
+  border: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.profile-link p {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
+
+.bodyblue {
+  background-color: $lightblue;
+}
+
+input[id^="nav-collapsible"] {
+  display: none;
+}
+
+input[id^="nav-collapsible"]:checked+label {
+  transition: background 0.2s cubic-bezier(.64, .09, .08, 1), color 0.2s cubic-bezier(.64, .09, .08, 1);
+}
+
+input[id^="nav-collapsible"]:checked+label:before {
+  transform: rotate(-230deg) translate(5px, -5px);
+}
+
+input[id^="nav-collapsible"]:checked+label:after {
+  transform: rotate(50deg) translate(5px, -2px);
+}
+
+.login-button p,
+.uitlog-button {
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background-color: $yellow;
+  cursor: pointer;
+  width: 18rem;
+  color: $darkblue;
+}
+
+.register p {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.register p:hover {
+  font-weight: 600;
+}
+
+.keuzemenu {
+  background-color: $lightblue;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.keuzemenu p {
+  font-size: 1.6rem;
+}
+
+main {
+  padding: 0 1.5rem;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5rem;
+  grid-template-areas:
+    "search"
+    "hartvoorcreatie"
+    "project"
+    "maaklocatie"
+    "evenementen";
+  margin: 4rem 0;
+}
+
+.searchbar {
+  grid-area: search;
+  align-self: center;
+  align-items: center;
+}
+
+.search {
+  position: relative;
+}
+
+.searchbar-input,
+.input-field input {
+  width: 100%;
+  padding: .5rem;
+  height: 3.5rem;
+  outline: none;
+  background-color: #FAFAFA;
+  border: none;
+}
+
+.input-field input {
+  background-color: #fff;
+}
+
+.addproject .input-field input,
+.inloggen .input-field input,
+.registreren .input-field input {
+  background-color: transparent;
+}
+
+.header {
+  grid-area: hartvoorcreatie;
+  margin-bottom: 3rem;
+}
+
+.home-title,
+.notfound-title {
+  font-family: 'ArialBlack';
+  font-weight: 800;
+  font-size: 2.7rem;
+  line-height: 3.6rem;
+  text-transform: uppercase;
+  padding: 1.4rem 0 1rem;
+}
+
+span {
+  background-image: linear-gradient(0deg, transparent 2.8rem, $yellow 0);
+  background-position: left .9rem bottom 3rem;
+}
+
+i {
+  border: solid $darkblue;
+  border-width: 0 .3rem .3rem 0;
+  display: inline-block;
+  padding: .3rem;
+}
+
+.button-next {
+  color: $darkblue;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  transition: color .3s;
+  cursor: pointer;
+}
+
+.button-next input {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: $darkblue;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.button-next:before {
+  background-color: $yellow;
+  border-radius: 2.5rem;
+  content: "";
+  height: 90%;
+  width: 3.5rem;
+  transition-property: background-color, width;
+  transition-duration: .3s, .3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.button-next:hover:before {
+  width: 100%;
+}
+
+.button-next--primary:hover:before {
+  background-color: $yellow;
+}
+
+.header-content p {
+  margin-bottom: 2rem;
+}
+
+.maaklocatie {
+  grid-area: maaklocatie;
+  align-items: start;
+}
+
+.projectitem-title {
+  font-weight: 600;
+  font-size: 1.7rem;
+  padding: .5rem 0;
+}
+
+.project {
+  grid-area: project;
+  background-color: $lightblue;
+  padding: 3rem 1.5rem;
+}
+
+.project__header {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: .05rem solid $darkblue;
+}
+
+.project__header img {
+  width: 50%;
+}
+
+.project__header:last-child {
+  border: none;
+}
+
+.project-content {
+  padding-left: 2rem;
+}
+
+.project-content h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.project-title,
+.nieuws-title,
+.overons-title,
+.events-title,
+.maaklocatie-title,
+.locatie-title,
+.forum-title,
+.projecten-title {
+  font-family: 'ArialBlack';
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  padding-left: .6rem;
+}
+
+.overons-title,
+.forum-title {
+  padding: 0 0 1rem 0;
+}
+
+.overons-title {
+  font-size: 2.4rem;
+}
+
+.bekijk-link {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.evenementen {
+  grid-area: evenementen;
+}
+
+.event,
+.forminputs {
+  display: flex;
+  align-items: center;
+}
+
+.forminputs {
+  align-items: flex-start;
+}
+
+.forminputs .input-field:first-child {
+  padding-right: 2rem;
+}
+
+.nieuwsartikelen {
+  grid-area: nieuws;
+  margin: 3rem 0;
+}
+
+.nieuwsartikelen header div,
+.evenementen header div,
+.project header div,
+.maaklocatie header div {
+  display: flex;
+  align-items: center;
+}
+
+.nieuwsartikelen header,
+.evenementen header,
+.maaklocatie header,
+.project header,
+.forumname,
+.commentname {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.nieuws-content {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.nieuws-content article {
+  border-bottom: .05rem solid $darkblue;
+  padding: 2rem 0;
+}
+
+.nieuws-content article:last-child {
+  border-bottom: none;
+}
+
+.nieuws-subtitle,
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nieuws-content h3 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.more-btn {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.more-btn:hover,
+.forum-allvragen:hover,
+.forum-like:hover,
+.paswoordvergeten:hover,
+.profile-link p:hover,
+.forum-vraagtitle:hover {
+  text-decoration: underline;
+}
+
+.overons {
+  margin: 4rem 0 7rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5rem;
+}
+
+.subtitle,
+.event-title {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 1rem 0;
+}
+
+.inloggen,
+.registreren,
+.addvraag,
+.notfound {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background-size: contain;
+  background-position: center center;
+}
+
+.notfound {
+  background-size: 70% 70%;
+}
+
+.notfound-title {
+  margin: 3rem 0;
+}
+
+.registreren {
+  margin: 4rem 0;
+  background-color: $lightblue;
+  padding: 2rem;
+
+  height: 100%;
+}
+
+.addvraag {
+  background: none;
+}
+
+.forum,
+.addproject,
+.forumdetail,
+.events,
+.profile,
+.locatie,
+.gridEvents,
+.addproject,
+.projectdetail,
+.forumdetail {
+  padding: 6rem 0;
+}
+
+.form-register,
+.form-login,
+.form-addvraag {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-end;
+}
+
+.inlog-title,
+.register-title,
+.addvraag-title,
+.addproject-title {
+  font-weight: 800;
+  font-size: 3rem;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.form-error {
+  color: var(--red);
+}
+
+.paswoordvergeten,
+.forminfo {
+  text-align: right;
+  margin-top: .6rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.7rem;
+  padding: 1rem 0 .5rem;
+}
+
+.input-field {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  border: none;
+  background: none;
+}
+
+::placeholder {
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #D1D1D1;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+}
+
+.icon img {
+  width: 170%;
+}
+
+.alltags {
+  font-weight: 600;
+  text-align: right;
+}
+
+.form {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+
+.visible {
+  display: block;
+}
+
+.projecten {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "projecttitle projecttitle"
+    "addproject addproject"
+    "search search"
+    "extraZoek extraZoek"
+    "filter filter"
+    "project project";
+  margin: 4rem 0;
+}
+
+.verderButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project-item {
+  animation: fadeIn 1s ease 0s 1 forwards;
+}
+
+@keyframes fadeIn {
+
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.uitgebreid {
+  text-align: right;
+}
+
+.projectitem-content {
+  padding: 0 0 1rem 1rem;
+}
+
+.projectdetail-title {
+  font-family: 'ArialBlack';
+  font-size: 3.5rem;
+  margin: 6rem 0 2rem;
+}
+
+.projecten-title {
+  grid-area: projecttitle;
+}
+
+.projecten .searchbar {
+  grid-area: search;
+}
+
+.bijgehouden-projecten .project-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
+}
+
+.projecten .project-item {
+  grid-area: project;
+  justify-self: center;
+  align-items: flex-start;
+}
+
+.project-item article {
+  margin-bottom: 5rem;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: .4rem;
+  transition: transform;
+  transition-duration: 1s;
+
+  position: relative;
+}
+
+.project-item article:hover {
+  transform: translateY(-1.5rem);
+}
+
+.projecten .button-next {
+  grid-area: addproject;
+}
+
+.projecten aside {
+  grid-area: filter;
+}
+
+.projecten .project-item article {
+  grid-area: project;
+}
+
+.addproject label+input,
+.addproject label+textarea,
+.form-addvraag .input-field label+input,
+.form-addvraag .input-field label+textarea,
+.input-content,
+.inloggen .input-field label + input,
+.registreren .input-field label + input {
+  border-bottom: .1rem solid $darkblue;
+}
+
+.projectdetail-comments {
+  padding: 2rem;
+  margin: 5rem 0;
+  background-color: $lightblue;
+}
+
+.reactie-title,
+.projectdetail-reactie form label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.ulProjecten {
+  display:flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.projectdetail-content {
+  margin: 2rem 0;
+}
+
+.project-img,
+.form-add,
+.project-reactie > div,
+.project-detail {
+  width: 100%;
+}
+
+.contact {
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  padding-bottom: .5rem;
+}
+
+.project-gegevens {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
+.project-reactie {
+  border-bottom: 0.05rem solid $darkblue;
+  padding: 2rem 1.5rem;
+}
+
+.project-reactie:last-of-type {
+  border: none;
+}
+
+.projectdetail-reactie form {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+
+.liProject {
+  display: flex;
+  flex-flow: column;
+  font-weight: 400;
+  margin-right: 4rem;
+}
+
+.checkvisible {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 400;
+}
+
+.checkvisible input {
+  width: auto;
+  margin-right: 1rem;
+  outline: none;
+
+  background-color: #FAFAFA;
+  border: none;
+}
+
+.flexDate {
+  flex: 1;
+  text-align: center;
+}
+
+.paddingElements,
+.notfound-content{
+  padding-bottom: 2rem;
+}
+
+.flexExtra {
+  grid-column: 1/-1;
+}
+
+.locatie_icon,
+.searchevent_icon {
+  position: absolute;
+  top: 0.6rem;
+  right: .8rem;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .nav-aside {
+    transform: translateX(-100%);
+  }
+
+  #responsive-nav+label {
+    display: block;
+  }
+
+  #responsive-nav:checked+label {
+    color: white;
+    background: $darkblue;
+  }
+
+  #responsive-nav:checked~.nav-aside {
+    transform: translateX(0);
+  }
+
+  .paddingElements {
+    padding-bottom: 1.5rem;
+  }
+
+}
+
+@media screen and (max-width: 670px) {
+  .nav-aside {
+    width: 100%;
+  }
+
+  #responsive-nav+label {
+    padding: 2rem;
+    font-size: 24px;
+  }
+
+}
+
+@media screen and (min-width: 760px) {
+
+  .home,
+  .projecten,
+  .profile,
+  .locatie,
+  .gridEvents,
+  .forum,
+  .overons,
+  .addproject,
+  .projectdetail,
+  .forumdetail {
+    padding: 5rem;
+  }
+
+  .home {
+    background-position: top left;
+
+    margin: unset;
+  }
+
+  .home .evenementen > div {
+    width: 39vw;
+    margin: 0 auto;
+  }
+
+  .registreren {
+    background-color: unset;
+  }
+  
+  .body {
+    display: grid;
+    grid-template-columns: 10% 1fr;
+    grid-template-areas: "nav nav" "main main";
+  }
+
+  main {
+    grid-area: main;
+    padding: 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .header-content {
+    align-self: center;
+    margin-left: 3rem;
+  }
+
+  .header-img {
+    width: 22rem;
+  }
+
+  .project__header img {
+    width: 35%;
+  }
+
+  .subtitle {
+    padding: 0 0 1rem;
+  }
+
+  .locatie {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    grid-template-areas:
+      "locatietitle search"
+      "kaart kaart"
+      "locatiedetail locatiedetail"
+  }
+
+  .locatiekaart {
+    grid-area: kaart;
+  }
+
+  .forum-title,
+  .overons-title,
+  .projecten-title {
+    font-size: 3rem;
+  }
+
+  .projectdetail-content,
+  .project-reactie {
+    display: flex;
+  }
+
+  .projectdetail-comments {
+   
+    background-size: 100% 100%;
+  }
+
+  .project-img {
+    margin: 0 3rem 3rem 0;
+  }
+
+  .projectdetail-title {
+    margin: 1rem 0 3rem;
+  }
+
+  .projecten {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    grid-template-areas:
+    "projecttitle projecttile search"
+    "extraZoek extraZoek extraZoek"
+    ". . addproject"
+    "project project project"
+    "project project project"
+    "project project project";
+    margin: unset;
+  }
+
+  .projecten .searchbar {
+    grid-column: -3/-1;
+  }
+
+  .projecten aside,
+  .forum aside {
+    margin: 0;
+    position: sticky;
+    top: 3rem;
+  }
+
+  .projecten .project-item {
+    justify-self: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  .projecten .project-item article {
+    width: 26%;
+    margin-right: 5rem;
+  }
+
+  .project-item article img {
+    width: 50%;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .body {
+    grid-template-areas: "nav main";
+    grid-template-columns: 20rem 1fr;
+  }
+
+  .home .evenementen > div {
+    width: 22vw;
+    margin: 0 auto;
+  }
+
+  .home {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "hartvoorcreatie hartvoorcreatie"
+      "maaklocatie project"
+      "evenementen .";
+    grid-gap: 4rem;
+  }
+
+  .header-img {
+    width: 28%;
+  }
+
+  .header-content {
+    grid-column: 3/-1;
+    margin-left: 6rem;
+  }
+
+  .event {
+    margin: 0 -1rem;
+  }
+
+  .nieuws-content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+
+  .project {
+    padding: 2.5rem;
+  }
+
+  .nieuws-content article {
+    border-bottom: none;
+    border-right: .05rem solid $darkblue;
+    padding-right: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .project-title,
+  .nieuws-title,
+  .events-title,
+  .maaklocatie-title,
+  .locatie-title {
+    font-size: 2.3rem;
+  }
+
+  .header {
+    padding: 0 10rem;
+  }
+
+  .home-title,
+  .notfound-title {
+    font-size: 4.8rem;
+    padding-bottom: 2rem;
+  }
+
+  .inloggen {
+    background-size: auto;
+  }
+
+  .projecten {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    grid-template-areas:
+      "projecttitle projecttitle . search"
+      "extraZoek extraZoek extraZoek extraZoek"
+      "project project project addproject"
+      "project project project filter"
+      "project project project .";
+  }
+
+  .eventDetail {
+    padding: 5.5rem;
+  }
+
+  .overons {
+    grid-template-columns: 9% repeat(2, 1fr) 9%;
+  }
+
+  .form-login {
+      width: 37.5rem;
+  }
+
+  .maaklocatie {
+    grid-area: maaklocatie;
+    justify-content: start;
+  }
+}

@@ -16,7 +16,7 @@ interface Users {
 
 }
 
-    class Hello extends React.Component<Props, Users> {
+    class HelloPage extends React.Component<Props, Users> {
     
         componentDidMount() {
             const { userStore } = this.props;
@@ -29,22 +29,29 @@ interface Users {
             const {users}:any = this.props.userStore;
 
             return (
-                <div>
-                    <h1>Home</h1>
-                    <p>The Home Page is accessible by every signed in user.</p>
-    
+                <div className="projecten">
+                    <h1 className="projecten-title">Overview registered users</h1>
+                <section className="project-item">
+
+                
                     {Object.keys(toJS(users)).map(key =>
-                <section key={key}>
+                <article key={key}>
                     <img src="/person-icon-white.png" alt="image person" width="50" height="50"/>
-                   <h3>{users[key].username}</h3> 
-                </section>
+                    <div className="projectitem-content">
+                        <h3 className="projectitem-title">{users[key].username}</h3> 
+                        <p>{users[key].email}</p>
+                    </div>
+                   
+                </article>
                     )}
+                    </section>
                 </div>
             );
         }
     };
 
+
 export default compose<Props, {}>(
     inject('userStore'),
     observer
-)(Hello);
+)(HelloPage);;

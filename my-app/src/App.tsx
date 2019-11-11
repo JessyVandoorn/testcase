@@ -1,12 +1,12 @@
 import * as React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { Switch, Route, RouteComponentProps, NavLink } from 'react-router-dom';
+import { Switch, Route, RouteComponentProps, NavLink, BrowserRouter } from 'react-router-dom';
 import { firebase } from "./firebase";
 import Hello from './components/Hello';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import {Admin} from './components/Admin';
+import Admin from './components/Admin';
 import SignUpPage from './components/Register';
 import { withAuthentication } from "./firebase/withAuthentication";
 
@@ -33,6 +33,7 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
 
     return (
       <div>
+        <BrowserRouter>
         <nav >
           <ul className="nav nav-tabs">
             <li className="nav-item">
@@ -46,6 +47,7 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
             </li>
           </ul>
         </nav>
+        
         <Switch>
           <Route  path={'/'} exact component={Hello} />
           <Route exact={true} path={'/Login'} component={Login} />
@@ -53,8 +55,13 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
           <Route path="/Admin" component={Admin} />
           <Route path="/Logout" component={Logout} />
         </Switch>
+        </BrowserRouter>
       </div>
     );
   }
 }
-export const App = withAuthentication(AppComponent);
+
+
+const App = withAuthentication(AppComponent)
+
+export default App;

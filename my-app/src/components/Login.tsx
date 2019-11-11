@@ -57,34 +57,41 @@ class Login extends React.Component<any, State> {
             email === '';
 
         return (
-            <div>
-                <h3 className="h3 mb-3 font-weight-normal">Login</h3>
-                <form onSubmit={this.onSubmit} className="form-signin">
-                <input
+            <section className="inloggen">
+                <h3 className=" inlog-title">Login</h3>
+                <form onSubmit={this.onSubmit} className="form-login">
+                    <div className="input-field">
+                    <label htmlFor="email">E-mail</label>
+                    <input
                     value={email}
                     onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
                     type="text"
                     placeholder="Email Address"
-                    id="inputEmail" className="form-control" 
+                    id="email" className=" input-field" 
                 />
+                    </div>
+                <div className="input-field">
+                <label htmlFor="password">Password</label>
                 <input
                     value={password}
                     onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
                     type="password"
-                    placeholder="Password" className="form-control" 
+                    placeholder="Password" className="input-field" id="password"
                 />
-                <button disabled={isInvalid} type="submit" className="btn btn-lg btn-primary btn-block">
-                    Sign In
-                </button>
+                </div>
+                <div className=" button-next button-next--primary">
+                    <input type="submit" disabled={isInvalid} value="Login"/><i className="arrow right"></i>
+                </div>
+                
 
                 {error && <p>{error.message}</p>}
             </form>
-            <p>
+            <p className="paswoordvergeten">
             Don't have an account?
             {' '}
             <Link to={'/Register'}>Sign Up</Link>
         </p>
-            </div>
+            </section>
             
         )
     }

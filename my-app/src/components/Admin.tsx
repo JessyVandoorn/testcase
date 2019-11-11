@@ -106,37 +106,48 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
             <AuthUserContext.Consumer>
                 {authUser => {
                     return(
-            <div>
-                <h2>Account: {(authUser as any).email}</h2>
-                <p>edit</p>
-                <form onSubmit={event => this.onSubmit(event)}>
-                    <label htmlFor="">Change username
-                        <input type="text" value={username} onChange={event => this.setStateWithEvent(event, "username")}/>
-                    </label>
-                    <button type="submit">Change username</button>
+            <section className=" home">
+                <div className="header">
+                <h2 >Account: {(authUser as any).email}</h2>
+                <section className="login-button evenementen">
+
+        
+<SignOutButton />
+</section>
+                </div>
+                
+                <form onSubmit={event => this.onSubmit(event)} className=" inloggen form-login maaklocatie">
+                    <div className="input-field">
+                    <label htmlFor="" >Change username</label>
+                        <input type="text" value={username} onChange={event => this.setStateWithEvent(event, "username")} className=" input-field" />
+                        </div>
+                    <button type="submit" className=" button-next button-next--primary">Change username</button>
+                    
+                    
                 </form>
-                <div>
-                   <form action="">
-                       <label htmlFor="">Search in database of logged in users
-                        <input type="search" value={value} onChange={event => this.setStateWithEvent(event, "value")}/>
-                       </label>
-                       <button onClick={this.handleSearch}>Search</button>
+                <div className="project">
+                   <form action="" className="form-login">
+                       <div className="input-field search">
+                       <label htmlFor="">Search in database of logged in users</label>
+                        <input type="search" value={value} onChange={event => this.setStateWithEvent(event, "value")} className="searchbar-input"/>
+                       
+                       </div>
+                       
+                       <button onClick={this.handleSearch} className=" button-next button-next--primary">Search</button>
                    </form>
                    {!!users && <UserList users={users} />}
 
                 </div>
-                <div>
-                    <p>Remove</p>
+                <div className="login-button maaklocatie">
                     <button onSubmit={this.handleDelete}>Delete user</button>
                 </div>
-                <p>Add</p>
-                <p>
+                <p className="paswoordvergeten maaklocatie login-button ">
             Add another user
             {' '}
             <Link to={'/Register'}>Add User</Link>
         </p>
-        <SignOutButton />
-            </div>
+        
+            </section>
                 )}}
             </AuthUserContext.Consumer>
         )
@@ -147,5 +158,6 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
 
 
 const authCondition = (authUser: any) => !!authUser;
+const Admin = withAuthorization(authCondition)(AdminPage);
 
-export const Admin = withAuthorization(authCondition)(AdminPage);
+export default Admin;

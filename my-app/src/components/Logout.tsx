@@ -4,12 +4,12 @@ import { auth } from './../firebase';
 
 const SignOutButton: React.StatelessComponent<{}> = () =>
     (
-        <button
+        <a
             type="button"
             onClick={auth.doSignOut}
-        >
-            Sign Out
-        </button>
+            className="login-button">
+            <p>Sign Out</p>
+        </a>
     );
 
 export default SignOutButton;

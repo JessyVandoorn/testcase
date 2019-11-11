@@ -8,7 +8,7 @@ export class UserList extends React.Component<InterfaceProps, {}> {
 
   public render() {
     const { users }: any = this.props;
-
+    console.log(users);
     return (
       <div>
         <ul>
