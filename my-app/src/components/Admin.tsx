@@ -109,11 +109,16 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
             <section className=" home">
                 <div className="header">
                 <h2 >Account: {(authUser as any).email}</h2>
-                <section className="login-button evenementen">
-
+                <section className="login-button flexButton">
+                <p className="paswoordvergeten evenementen login-button ">
+            <Link to={'/Register'}>Add a new user</Link>
+        </p>
         
 <SignOutButton />
-</section>
+
+                    <button onSubmit={this.handleDelete} className="uitlog-button">Delete user</button>
+                    
+                </section>
                 </div>
                 
                 <form onSubmit={event => this.onSubmit(event)} className=" inloggen form-login maaklocatie">
@@ -138,14 +143,6 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
                    {!!users && <UserList users={users} />}
 
                 </div>
-                <div className="login-button maaklocatie">
-                    <button onSubmit={this.handleDelete}>Delete user</button>
-                </div>
-                <p className="paswoordvergeten maaklocatie login-button ">
-            Add another user
-            {' '}
-            <Link to={'/Register'}>Add User</Link>
-        </p>
         
             </section>
                 )}}

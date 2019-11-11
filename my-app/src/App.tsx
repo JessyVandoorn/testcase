@@ -32,7 +32,7 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
     const {authUser}:any = this.state;
 
     return (
-      <div>
+      <main>
         <BrowserRouter>
         <nav >
           <ul className="nav nav-tabs">
@@ -56,7 +56,7 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
           <Route path="/Logout" component={Logout} />
         </Switch>
         </BrowserRouter>
-      </div>
+      </main>
     );
   }
 }

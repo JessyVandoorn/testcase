@@ -121,14 +121,11 @@ main {
 
 .home {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 5rem;
   grid-template-areas:
-    "search"
-    "hartvoorcreatie"
-    "project"
-    "maaklocatie"
-    "evenementen";
+    "hartvoorcreatie hartvoorcreatie"
+    "maaklocatie project";
   margin: 4rem 0;
 }
 
@@ -747,6 +744,20 @@ button,
   right: .8rem;
 }
 
+.right {
+    transform: rotate(-45deg);
+  }
+
+  .flexButton {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+  }
+
 @media screen and (max-width: 1000px) {
 
   .nav-aside {
@@ -780,6 +791,12 @@ button,
   #responsive-nav+label {
     padding: 2rem;
     font-size: 24px;
+  }
+
+  .maaklocatie {
+    grid-area: maaklocatie;
+    justify-content: start;
+    height: 19rem;
   }
 
 }
@@ -823,11 +840,6 @@ button,
   main {
     grid-area: main;
     padding: 0;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-around;
   }
 
   .header-content {
@@ -915,7 +927,7 @@ button,
     flex-flow: row wrap;
     justify-content: center;
 
-    width: 100%;
+    width: 108%;
   }
 
   .projecten .project-item article {
@@ -926,6 +938,14 @@ button,
   .project-item article img {
     width: 50%;
     height: auto;
+  }
+
+  .login {
+    width: 375px;
+  }
+  .maaklocatie {
+    grid-area: maaklocatie;
+    justify-content: start;
   }
 }
 
@@ -976,6 +996,17 @@ button,
     border-right: .05rem solid $darkblue;
     padding-right: 2.5rem;
   }
+
+  .maaklocatie {
+    grid-area: maaklocatie;
+    justify-content: start;
+  }
+
+  
+
+  .projecten .project-item {
+      width: 100%;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -1023,10 +1054,5 @@ button,
 
   .form-login {
       width: 37.5rem;
-  }
-
-  .maaklocatie {
-    grid-area: maaklocatie;
-    justify-content: start;
   }
 }
