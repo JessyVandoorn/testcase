@@ -35,25 +35,25 @@ class AppComponent extends React.Component<RouteComponentProps<any>> {
       <main>
         <BrowserRouter>
         <nav >
-          <ul className="nav nav-tabs">
+          <ul className="nav justify-content-end">
             <li className="nav-item">
-              <NavLink to={'/'} className="nav-link"> Home </NavLink>
+              <NavLink to={'/'} className="nav-link" activeClassName=""> Home </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to={'/Admin'} className="nav-link "> Admin </NavLink>
+              <NavLink to={'/Admin'} className="nav-link " activeClassName="active-link"> Admin </NavLink>
             </li>
             <li className="nav-item">
-              {authUser === null ?  <NavLink to={'/Login'} className="nav-link "> Login </NavLink> :  <NavLink to={'/Logout'} className="nav-link "> Logout </NavLink> }
+              {authUser === null ?  <NavLink to={'/Login'} className="nav-link " activeClassName="active-link"> Login </NavLink> :  <NavLink to={'/Logout'} className="nav-link " activeClassName="active-link"> Logout </NavLink> }
             </li>
           </ul>
         </nav>
         
         <Switch>
-          <Route  path={'/'} exact component={Hello} />
+          <Route  path={'/'} exact={true} component={Hello} />
           <Route exact={true} path={'/Login'} component={Login} />
           <Route exact={true} path={'/Register'} component={SignUpPage} />
-          <Route path="/Admin" component={Admin} />
-          <Route path="/Logout" component={Logout} />
+          <Route path="/Admin" exact={true} component={Admin} />
+          <Route path="/Logout" exact={true} component={Logout} />
         </Switch>
         </BrowserRouter>
       </main>
