@@ -56,10 +56,9 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
         event.preventDefault();
     }
 
-    private handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const {error} = this.state;
+    private handleDelete = (event: any) => {
         const user:any = auth.currentUser();
-
+        console.log(event);
         const {
             history,
         } = this.props;
@@ -115,10 +114,10 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
             <Link to={'/Register'}>Add a new user</Link>
         </p>
         
-<SignOutButton />
 
-                    <button onSubmit={this.handleDelete} className="uitlog-button">Delete user</button>
-                    
+
+                    <button onClick={this.handleDelete} className="uitlog-button">Delete user</button>
+                    <SignOutButton />
                 </section>
                 </div>
                 

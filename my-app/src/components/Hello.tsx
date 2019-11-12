@@ -36,8 +36,8 @@ interface Users {
                 
                     {Object.keys(toJS(users)).map(key =>
                 <article key={key} className="flexUsers">
-                    <img src="/person-icon-white.png" alt="image person" width="50" height="50"/>
-                    <div className="projectitem-content flexUsers">
+                    <img src="/person-icon-white.png" alt="person" width="50" height="50"/>
+                    <div className="projectitem-content flexUsers flexUsersUpdate">
                         <h3 className="projectitem-title">{users[key].username}</h3> 
                         <p>{users[key].email}</p>
                     </div>

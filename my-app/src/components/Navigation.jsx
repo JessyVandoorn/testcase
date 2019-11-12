@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthUserContext } from "../firebase/AuthUserContext";
 import SignOutButton from "./Logout";
 
@@ -18,17 +18,12 @@ const NavigationAuth = () => (
     <div className="nav-aside">
         <nav>
             <ul>
-                <li>
                     <NavLink to={'/'} className="nav-link" activeClassName="selected-link"> 
                        <li>Home</li>
                     </NavLink>
-                </li>
                     <NavLink to={'/Admin'} className="nav-link " activeClassName="selected-link"> 
                        <li>Admin </li> 
                     </NavLink>
-                    <NavLink to={'/Login'} className="nav-link " activeClassName="selected-link">
-                       <li>Login</li> 
-                        </NavLink>
                 <li>
                     <SignOutButton />
                 </li>
@@ -41,8 +36,27 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-<ul>
-    <li>
-        <Link to={'/Admin'}>Landing </Link> </li> <li>
-        <Link to={'/Login'}>Sign In</Link> </li> </ul> 
+<div className="navigation">
+    <input type="checkbox" id="responsive-nav" />
+    <label htmlFor="responsive-nav">☰</label>
+    <div className="nav-aside">
+        <nav>
+            <ul>
+                    <NavLink to={'/'} className="nav-link" activeClassName="selected-link"> 
+                       <li>Home</li>
+                    </NavLink>
+                    <NavLink to={'/Admin'} className="nav-link " activeClassName="selected-link"> 
+                       <li>Admin </li> 
+                    </NavLink>
+                    <NavLink to={'/Login'} className="login-button"> 
+                       <li>
+                          <p>Login </p> 
+                           </li> 
+                    </NavLink>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
 );

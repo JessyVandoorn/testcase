@@ -1,6 +1,6 @@
 import * as React from 'react';
-import './custom.scss';
-import { Switch, Route, RouteComponentProps, NavLink, BrowserRouter } from 'react-router-dom';
+import './scss/style.scss';
+import { Switch, Route, RouteComponentProps, BrowserRouter } from 'react-router-dom';
 import { firebase } from "./firebase";
 import Hello from './components/Hello';
 import Login from './components/Login';

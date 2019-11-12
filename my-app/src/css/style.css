@@ -1,0 +1,1154 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+body {
+  font-family: "roboto", sans-serif;
+  font-weight: 300;
+  color: #374958;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: #374958;
+}
+
+em {
+  font-weight: 300;
+  text-transform: lowercase;
+}
+
+textarea {
+  border: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.footer {
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/*NAVIGATION*/
+.navigation {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+}
+
+#responsive-nav {
+  display: none;
+}
+
+#responsive-nav + label {
+  display: none;
+  padding: 1.6rem;
+  font-size: 2rem;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1), color 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+.nav-aside {
+  position: fixed;
+  z-index: 9999999;
+  transition: transform 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: white;
+  width: 20rem;
+  height: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+.logo-area {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  padding: 0 1rem;
+}
+nav ul {
+  margin-bottom: 1rem;
+}
+
+.nav-link {
+  width: 100%;
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: none;
+  border-bottom: 0.05rem solid #374958;
+  padding: 0.75rem;
+}
+
+.nav-link:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.nav-link:hover,
+.active-link,
+.selected-link {
+  border-left: 0.5rem solid #374958;
+}
+
+.profile-link p {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
+
+.bodyblue {
+  background-color: #EFFAFE;
+}
+
+.profile-link img {
+  height: 3rem;
+  padding-right: 0.5rem;
+  margin-left: 1rem;
+}
+
+input[id^=nav-collapsible] {
+  display: none;
+}
+
+input[id^=nav-collapsible]:checked + label {
+  transition: background 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), color 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+input[id^=nav-collapsible]:checked + label:before {
+  transform: rotate(-230deg) translate(5px, -5px);
+}
+
+input[id^=nav-collapsible]:checked + label:after {
+  transform: rotate(50deg) translate(5px, -2px);
+}
+
+.login-button p,
+.uitlog-button {
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.5rem;
+  background-color: #FDE8AA;
+  cursor: pointer;
+  width: 100%;
+  color: #374958;
+  margin-bottom: 1.5rem;
+}
+
+.register p {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.register p:hover {
+  font-weight: 600;
+}
+
+.keuzemenu {
+  background-color: #EFFAFE;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.keuzemenu p {
+  font-size: 1.6rem;
+}
+
+.buttons-persons {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.buttons-persons img {
+  margin-bottom: 2rem;
+}
+
+.button-personKeuze {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #374958;
+  font-size: 1.6rem;
+  padding-right: 1.9rem;
+  padding-bottom: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.buttons-persons button {
+  transition: transform;
+  transition-duration: 1s;
+}
+
+.buttons-persons button:hover {
+  transform: translateY(-1.8rem);
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+  grid-template-areas: "search" "hartvoorcreatie" "maaklocatie" "project";
+}
+
+.searchbar {
+  grid-area: search;
+  align-self: center;
+  align-items: center;
+}
+
+.search {
+  position: relative;
+}
+
+.input_img {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.8rem;
+}
+
+.searchbar-input,
+.input-field input {
+  width: 100%;
+  padding: 0.5rem;
+  height: 3.5rem;
+  outline: none;
+  background-color: #FAFAFA;
+  border: none;
+}
+
+.uitgebreid {
+  text-align: right;
+}
+
+.input-field input {
+  background-color: #fff;
+}
+
+.addproject .input-field input,
+.inloggen .input-field input,
+.registreren .input-field input {
+  background-color: transparent;
+}
+
+.header {
+  grid-area: hartvoorcreatie;
+  margin-bottom: 3rem;
+}
+
+.home-title,
+.notfound-title {
+  font-family: "ArialBlack";
+  font-weight: 800;
+  font-size: 2.7rem;
+  line-height: 3.6rem;
+  text-transform: uppercase;
+  padding: 1.4rem 0 1rem;
+}
+
+span {
+  background-image: linear-gradient(0deg, transparent 2.8rem, #FDE8AA 0);
+  background-position: left 0.9rem bottom 3rem;
+}
+
+i {
+  border: solid #374958;
+  border-width: 0 0.3rem 0.3rem 0;
+  display: inline-block;
+  padding: 0.3rem;
+}
+
+.up {
+  transform: rotate(-135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.down {
+  transform: rotate(45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+}
+
+.button-next {
+  color: #374958;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.button-next input {
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #374958;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.button-next:before {
+  background-color: #FDE8AA;
+  border-radius: 2.5rem;
+  content: "";
+  height: 90%;
+  width: 3.5rem;
+  transition-property: background-color, width;
+  transition-duration: 0.3s, 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.button-next:hover:before {
+  width: 100%;
+}
+
+.button-next--primary:hover:before {
+  background-color: #FDE8AA;
+}
+
+.header-content p {
+  margin-bottom: 2rem;
+}
+
+.maaklocatie {
+  grid-area: maaklocatie;
+}
+
+.projectitem-title {
+  font-weight: 600;
+  font-size: 1.7rem;
+  padding: 0.5rem 0;
+}
+
+.project {
+  grid-area: project;
+  background-color: #EFFAFE;
+  padding: 3rem 1.5rem;
+}
+
+.project__header {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 0.05rem solid #374958;
+}
+
+.project__header img {
+  width: 50%;
+}
+
+.project__header:last-child {
+  border: none;
+}
+
+.project-content {
+  padding-left: 2rem;
+}
+
+.project-content h2 {
+  font-weight: 600;
+  font-size: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.project-tag {
+  border: 0.1rem solid #374958;
+  margin: 1rem 0.5rem 1rem 0;
+  padding: 0.05rem 1.5rem;
+  cursor: pointer;
+}
+
+.project-tag-active {
+  border: 0.1rem solid #374958;
+  background-color: #374958;
+  color: white;
+  margin: 1rem 0.5rem 1rem 0;
+  padding: 0.05rem 1.5rem;
+  cursor: pointer;
+}
+
+.project-title,
+.nieuws-title,
+.overons-title,
+.events-title,
+.maaklocatie-title,
+.locatie-title,
+.forum-title,
+.projecten-title {
+  font-family: "ArialBlack";
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 2.8rem;
+  padding-left: 0.6rem;
+}
+
+.overons-title,
+.forum-title {
+  padding: 0 0 1rem 0;
+}
+
+.overons-title {
+  font-size: 2.4rem;
+}
+
+.bekijk-link {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.evenementen {
+  grid-area: evenementen;
+}
+
+.event,
+.forminputs {
+  display: flex;
+  align-items: center;
+}
+
+.forminputs {
+  align-items: flex-start;
+}
+
+.forminputs .input-field:first-child {
+  padding-right: 2rem;
+}
+
+.nieuwsartikelen header div,
+.evenementen header div,
+.project header div,
+.maaklocatie header div {
+  display: flex;
+  align-items: center;
+}
+
+.nieuwsartikelen header,
+.evenementen header,
+.maaklocatie header,
+.project header,
+.forumname,
+.commentname {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.nieuws-subtitle,
+.forum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.more-btn:hover,
+.forum-allvragen:hover,
+.forum-like:hover,
+.paswoordvergeten:hover,
+.profile-link p:hover,
+.forum-vraagtitle:hover {
+  text-decoration: underline;
+}
+
+.subtitle,
+.event-title {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 1rem 0;
+}
+
+.inloggen,
+.registreren,
+.addvraag,
+.notfound {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  background-position: center center;
+}
+
+.registreren {
+  margin: 4rem 0;
+  background-color: #EFFAFE;
+  padding: 2rem;
+  height: 100%;
+}
+
+.addvraag {
+  background: none;
+}
+
+.forum,
+.addproject,
+.forumdetail,
+.events,
+.profile,
+.locatie,
+.gridEvents,
+.addproject,
+.projectdetail,
+.forumdetail {
+  padding: 6rem 0;
+}
+
+.form-register,
+.form-login,
+.form-addvraag {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-end;
+}
+
+.inlog-title,
+.register-title,
+.addvraag-title,
+.addproject-title {
+  font-family: "ArialBlack";
+  font-weight: 800;
+  font-size: 3rem;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.paswoordvergeten,
+.forminfo {
+  text-align: right;
+  margin-top: 0.6rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.7rem;
+  padding: 1rem 0 0.5rem;
+}
+
+.directlink {
+  font-weight: 600;
+}
+
+.directlink:hover {
+  text-decoration: underline;
+}
+
+.input-field {
+  display: flex;
+  flex-flow: column wrap;
+  margin-bottom: 1.5rem;
+  width: 69vw;
+}
+
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  border: none;
+  background: none;
+}
+
+::placeholder {
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #D1D1D1;
+}
+
+.forum-allvragen,
+.forum-like {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.forum-allvragen img,
+.forum-like img {
+  margin-right: 0.8rem;
+}
+
+.forum-user {
+  text-align: center;
+  margin-right: 2rem;
+  flex: 0.5;
+  align-self: center;
+}
+
+.forum-user + div {
+  flex: 5;
+}
+
+.forum-radio-search {
+  display: none;
+}
+
+.forum-user p {
+  font-weight: 600;
+}
+
+.forum-date,
+.comment-date {
+  font-weight: 400;
+}
+
+.forum-vragen, .header {
+  animation: fadeIn 1s ease 0s 1 forwards;
+}
+
+.form {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+
+.visible {
+  display: block;
+}
+
+.projecten {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "projecttitle projecttitle" "addproject addproject" "search search" "extraZoek extraZoek" "filter filter" "project project";
+  margin: 4rem 0;
+}
+
+.project-item {
+  animation: fadeIn 1s ease 0s 1 forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.projectitem-content {
+  padding: 0 0 1rem 1rem;
+}
+
+.projectdetail-title {
+  font-family: "ArialBlack";
+  font-size: 3.5rem;
+  margin: 6rem 0 2rem;
+}
+
+.projecten-title {
+  grid-area: projecttitle;
+}
+
+.projecten .searchbar {
+  grid-area: search;
+}
+
+.bijgehouden-projecten .project-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 3rem;
+}
+
+.projecten .project-item {
+  grid-area: project;
+  justify-self: center;
+  align-items: flex-start;
+}
+
+.project-item article {
+  margin-bottom: 5rem;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0.4rem;
+  transition: transform;
+  transition-duration: 1s;
+  position: relative;
+}
+
+.project-item article:hover {
+  transform: translateY(-1.5rem);
+}
+
+.projecten .button-next {
+  grid-area: addproject;
+}
+
+.projecten .project-item article {
+  grid-area: project;
+}
+
+.addproject label + input,
+.addproject label + textarea,
+.form-addvraag .input-field label + input,
+.form-addvraag .input-field label + textarea,
+.input-content,
+.inloggen .input-field label + input,
+.registreren .input-field label + input {
+  border-bottom: 0.1rem solid #374958;
+}
+
+.ulProjecten {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.projectdetail-content {
+  margin: 2rem 0;
+}
+
+.project-img,
+.form-add,
+.project-reactie > div,
+.project-detail {
+  width: 100%;
+}
+
+.checkvisible {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 400;
+}
+
+.checkvisible input {
+  width: auto;
+  margin-right: 1rem;
+  outline: none;
+  background-color: #FAFAFA;
+  border: none;
+}
+
+.paddingElements,
+.notfound-content {
+  padding-bottom: 2rem;
+}
+
+.flexExtra {
+  grid-column: 1/-1;
+}
+
+.flexUsers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maaklocatie {
+  grid-area: maaklocatie;
+  justify-content: start;
+}
+
+.project {
+  justify-content: start;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-aside {
+    transform: translateX(-100%);
+  }
+
+  #responsive-nav + label {
+    display: block;
+  }
+
+  #responsive-nav:checked + label {
+    color: white;
+    background: #374958;
+  }
+
+  #responsive-nav:checked ~ .nav-aside {
+    transform: translateX(0);
+  }
+
+  .gridEvents {
+    grid-template-rows: 20% 40.2rem 20%;
+  }
+
+  .paddingElements {
+    padding-bottom: 1.5rem;
+  }
+}
+@media screen and (min-width: 320px) {
+  header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-field {
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 1.5rem;
+    width: 84vw;
+    margin-right: 1.5rem;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 670px) {
+  .nav-aside {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 670px) {
+  #responsive-nav + label {
+    padding: 2rem;
+    font-size: 24px;
+  }
+
+  .home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5rem;
+    grid-template-areas: "hartvoorcreatie hartvoorcreatie" "maaklocatie project";
+    margin: 4rem 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .input-field {
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 1.5rem;
+    width: 40vw;
+  }
+
+  .project-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .flexUsers {
+    width: 46%;
+    margin-right: 2rem;
+  }
+
+  .marginElements {
+    margin-left: 2rem;
+  }
+}
+@media screen and (min-width: 760px) {
+  .home,
+.projecten,
+.profile,
+.locatie,
+.gridEvents,
+.forum,
+.overons,
+.addproject,
+.projectdetail,
+.forumdetail {
+    padding: 5rem;
+  }
+
+  .home {
+    background-position: top left;
+    margin: unset;
+  }
+
+  .home .evenementen > div {
+    width: 39vw;
+    margin: 0 auto;
+  }
+
+  .registreren {
+    background-color: unset;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 10% 1fr;
+    grid-template-areas: "nav nav" "main main";
+  }
+
+  .navigation {
+    grid-area: nav;
+  }
+
+  main {
+    grid-area: main;
+    padding: 0;
+  }
+
+  .keuzemenu {
+    height: 100vh;
+  }
+
+  .keuzemenu p {
+    width: 55vw;
+    margin: 0 auto;
+  }
+
+  .button-personKeuze {
+    padding: 3.5rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .header-content {
+    align-self: center;
+    margin-left: 3rem;
+  }
+
+  .header-img {
+    width: 22rem;
+  }
+
+  .project__header img {
+    width: 35%;
+  }
+
+  .forum-title,
+.overons-title,
+.projecten-title {
+    font-size: 3rem;
+  }
+
+  .projectdetail-content,
+.project-reactie {
+    display: flex;
+  }
+
+  .project-img {
+    margin: 0 3rem 3rem 0;
+  }
+
+  .projecten {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    grid-template-areas: "projecttitle projecttitle search" "project project project" "project project project" "project project project";
+    margin: unset;
+  }
+
+  .projecten .searchbar {
+    grid-column: -3/-1;
+  }
+
+  .projecten .project-item {
+    justify-self: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .projecten .project-item article {
+    width: 42%;
+    margin-right: 5rem;
+  }
+
+  .project-item article img {
+    width: 100%;
+  }
+
+  .form-addproject {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .inputFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login {
+    width: 375px;
+  }
+
+  .project-item article img {
+    width: 27%;
+    height: auto;
+  }
+
+  .maaklocatie {
+    grid-area: maaklocatie;
+    justify-content: start;
+  }
+
+  .home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5rem;
+    grid-template-areas: "hartvoorcreatie hartvoorcreatie" "maaklocatie project";
+    margin: 4rem 0;
+  }
+
+  .input-field {
+    width: 40vw;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .body {
+    grid-template-areas: "nav main";
+    grid-template-columns: 20rem 1fr;
+  }
+
+  .home .evenementen > div {
+    width: 22vw;
+    margin: 0 auto;
+  }
+
+  .nav-aside {
+    top: 0;
+    left: 0;
+  }
+
+  span {
+    background-image: linear-gradient(0deg, transparent 4.8rem, #FDE8AA 0);
+    background-position: left 0.9rem bottom 4rem;
+  }
+
+  .home {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: ". search" "hartvoorcreatie hartvoorcreatie" "maaklocatie project" "evenementen project" "nieuws nieuws";
+    grid-gap: 1rem;
+  }
+
+  .header-img {
+    width: 28%;
+  }
+
+  .header-content {
+    grid-column: 3/-1;
+    margin-left: 6rem;
+  }
+
+  .project {
+    padding: 2.5rem;
+  }
+
+  .project-img {
+    width: 28rem;
+  }
+
+  .projecten .project-item article {
+    width: 25%;
+    margin-right: 5rem;
+  }
+
+  .flexUsers {
+    width: 76%;
+    margin-right: 2rem;
+  }
+
+  .marginElements {
+    margin-left: 18rem;
+  }
+
+  .input-field {
+    width: 33vw;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .project-title,
+.nieuws-title,
+.events-title,
+.maaklocatie-title,
+.locatie-title {
+    font-size: 2.3rem;
+  }
+
+  .header {
+    padding: 0 10rem;
+  }
+
+  blockquote {
+    margin: 0 7rem;
+  }
+
+  .project__header img {
+    width: 35%;
+  }
+
+  .inloggen {
+    background-size: auto;
+  }
+
+  .projecten {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    grid-template-areas: "projecttitle projecttitle . search" "extraZoek extraZoek extraZoek extraZoek" "project project project addproject" "project project project filter" "project project project .";
+  }
+
+  .flexUsers {
+    width: 57%;
+  }
+
+  .projecten .project-item {
+    justify-content: unset;
+  }
+
+  .form-login {
+    width: 37.5rem;
+  }
+
+  .input-field {
+    width: 33vw;
+  }
+
+  .projecten .project-item article {
+    width: 27%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
