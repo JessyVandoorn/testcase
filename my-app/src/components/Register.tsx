@@ -78,37 +78,60 @@ class Register extends React.Component<any, State> {
             email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <section className="inloggen">
+                <form onSubmit={this.onSubmit} className="form-login">
+                <p className='error'></p>
+                <div className="input-field">
+                <label htmlFor="name">Full name</label>
                 <input
                     value={username}
                     onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
                     type="text"
                     placeholder="Full Name"
+                    id="id"
                 />
-                <input
+                </div>
+                <div className="input-field">
+                    <label htmlFor="email">E-mail</label>
+                    <input
                     value={email}
                     onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
                     type="text"
                     placeholder="Email Address"
+                    id="email"
                 />
-                <input
+                </div>
+                <div className="input-field">
+                    <label htmlFor="passwordone">Password</label>
+                    <input
                     value={passwordOne}
                     onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
                     type="password"
                     placeholder="Password"
+                    id="passwordone"
                 />
-                <input
+                </div>
+                <div className="input-field">
+                    <label htmlFor="passwordtwo">Confirm password</label>
+                    <input
                     value={passwordTwo}
                     onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
                     type="password"
                     placeholder="Confirm Password"
+                    id="passwordtwo"
                 />
-                <button disabled={isInvalid} type="submit">
-                    Sign Up
-                </button>
+                </div>
+                <div className="button-next button-next--primary">
+                    <button disabled={isInvalid} type="submit">
+                        Sign Up <i className="arrow right"></i>
+                    </button>
+                </div>
+                
 
                 {error && <p>{error.message}</p>}
             </form>
+            </section>
+            
         );
     }
 }

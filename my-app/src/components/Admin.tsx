@@ -106,8 +106,9 @@ class AdminPage extends React.Component<RouteComponentProps, State> {
             <AuthUserContext.Consumer>
                 {authUser => {
                     return(
-            <section className=" home">
+            <section className=" home marginElements">
                 <div className="header">
+                {/* <img src="/person-icon-white.png" alt="image person" width="50" height="50"/> */}
                 <h2 >Account: {(authUser as any).email}</h2>
                 <section className="login-button flexButton">
                 <p className="paswoordvergeten evenementen login-button ">

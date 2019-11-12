@@ -29,15 +29,15 @@ interface Users {
             const {users}:any = this.props.userStore;
 
             return (
-                <div className="projecten">
+                <div className="projecten marginElements">
                     <h1 className="projecten-title">Overview registered users</h1>
                 <section className="project-item">
 
                 
                     {Object.keys(toJS(users)).map(key =>
-                <article key={key}>
+                <article key={key} className="flexUsers">
                     <img src="/person-icon-white.png" alt="image person" width="50" height="50"/>
-                    <div className="projectitem-content">
+                    <div className="projectitem-content flexUsers">
                         <h3 className="projectitem-title">{users[key].username}</h3> 
                         <p>{users[key].email}</p>
                     </div>
